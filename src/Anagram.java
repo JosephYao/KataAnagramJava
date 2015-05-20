@@ -9,9 +9,13 @@ public class Anagram {
     }
 
     public List<String> generate(String source) {
-        if (!this.words.isEmpty())
+        if (!this.words.isEmpty() && isAnagram(source))
             return Arrays.asList(words.get(0) + " " + words.get(0));
 
         return Arrays.asList();
+    }
+
+    private boolean isAnagram(String source) {
+        return source.equals(words.get(0) + words.get(0));
     }
 }

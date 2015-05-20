@@ -20,6 +20,11 @@ public class TestAnagram {
         assertThat(anagramsOf(Arrays.asList("ab"), "abab"), contains("ab ab"));
     }
 
+    @Test
+    public void one_word_list_and_source_is_not_double_of_this_word_will_have_no_anagram() {
+        assertThat(anagramsOf(Arrays.asList("b"), "aa"), empty());
+    }
+
     private List<String> anagramsOf(List<String> words, String source) {
         return new Anagram(words).generate(source);
     }
