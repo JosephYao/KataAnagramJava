@@ -25,6 +25,11 @@ public class TestAnagram {
         assertThat(anagramsOf(Arrays.asList("b"), "aa"), empty());
     }
 
+    @Test
+    public void one_word_list_and_source_contains_double_of_all_characters_of_this_word_will_have_one_anagram() {
+        assertThat(anagramsOf(Arrays.asList("ab"), "abba"), contains("ab ab"));
+    }
+
     private List<String> anagramsOf(List<String> words, String source) {
         return new Anagram(words).generate(source);
     }

@@ -16,6 +16,9 @@ public class Anagram {
     }
 
     private boolean isAnagram(String source) {
-        return source.equals(words.get(0) + words.get(0));
+        int[] sortedSource = source.chars().sorted().toArray();
+        int[] sortedAnagrams = (words.get(0) + words.get(0)).chars().sorted().toArray();
+
+        return Arrays.equals(sortedSource, sortedAnagrams);
     }
 }
