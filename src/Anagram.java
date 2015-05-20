@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Anagram {
     private final List<String> words;
@@ -9,15 +10,19 @@ public class Anagram {
     }
 
     public List<String> generate(String source) {
-        if (!this.words.isEmpty() && isAnagram(source))
-            return Arrays.asList(words.get(0) + " " + words.get(0));
-
-        return Arrays.asList();
+        return words.stream()
+                .filter(candidate -> isAnagram(source, candidate))
+                .map(this::output)
+                .collect(Collectors.toList());
     }
 
-    private boolean isAnagram(String source) {
+    private String output(String anagram) {
+        return anagram + " " + anagram;
+    }
+
+    private boolean isAnagram(String source, String candidate) {
         int[] sortedSource = source.chars().sorted().toArray();
-        int[] sortedAnagrams = (words.get(0) + words.get(0)).chars().sorted().toArray();
+        int[] sortedAnagrams = (candidate + candidate).chars().sorted().toArray();
 
         return Arrays.equals(sortedSource, sortedAnagrams);
     }
