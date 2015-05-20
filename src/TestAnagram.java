@@ -15,8 +15,9 @@ public class TestAnagram {
     }
 
     @Test
-    public void one_character_word_list_and_source_is_double_of_this_character_will_have_one_anagram() {
+    public void one_word_list_and_source_is_double_of_this_word_will_have_one_anagram() {
         assertThat(anagramsOf(Arrays.asList("a"), "aa"), contains("a a"));
+        assertThat(anagramsOf(Arrays.asList("ab"), "abab"), contains("ab ab"));
     }
 
     private List<String> anagramsOf(List<String> words, String source) {
