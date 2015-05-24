@@ -35,6 +35,11 @@ public class TestAnagram {
         assertThat(anagramsOf(Arrays.asList("a", "b"), "bb"), contains("b b"));
     }
 
+    @Test
+    public void two_word_list_and_source_is_combination_of_these_two_words_will_have_them_as_anagram() {
+        assertThat(anagramsOf(Arrays.asList("a", "b"), "ab"), contains("a b"));
+    }
+
     private List<String> anagramsOf(List<String> words, String source) {
         return new Anagram(words).generate(source);
     }
